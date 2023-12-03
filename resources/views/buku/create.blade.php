@@ -31,25 +31,7 @@
                         <input type="date" id="tgl_terbit" name="tgl_terbit" class="border border-gray-300 rounded px-3 py-2 w-full">
                     </div>
 
-                    <div class="mb-4">
-                        <label for="thumbnail" class="block text-sm font-medium leading-6 text-gray-900">Thumbnail</label>
-                        <div class="mt-2">
-                            <input type="file" name="thumbnail" id="thumbnail">
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="gallery" class="block text-sm font-medium leading-6 text-gray-900">Gallery</label>
-                        <div class="mt-2" id="fileinput_wrapper"></div>
-                        <a href="javascript:void(0);" id="tambah" onclick="addFileInput()">Tambah</a>
-                        <script type="text/javascript">
-                            function addFileInput() {
-                                var div = document.getElementById('fileinput_wrapper');
-                                div.innerHTML += '<input type="file" name="gallery[]" id="gallery" class="block w-full mb-5" style="margin-bottom:5px;">';
-                            }
-                        </script>
-                    </div>
-
+                   
                     <div class="col-span-full mt-6">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Tambah Buku</button>
                         <a href="/buku" class="text-gray-600">Batal</a>

@@ -19,9 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ControllerBuku::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,22 +27,28 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/buku', [ControllerBuku::class, 'index'])->name('buku.index');
     Route::get('/buku/search', [ControllerBuku::class, 'search'])->name('buku.search');
-});
-
-Route::middleware(['auth','admin'])->group(function () {
     Route::get('/buku/create', [ControllerBuku::class, 'create'])->name('buku.create');
     Route::post('/buku', [ControllerBuku::class, 'store'])->name('buku.store');
     Route::delete('/buku/{id}', [ControllerBuku::class, 'destroy'])->name('buku.destroy');
     Route::get('/buku/edit/{id}', [ControllerBuku::class, 'edit'])->name('buku.edit');
     Route::post('/buku/update/{id}', [ControllerBuku::class, 'update'])->name('buku.update');
     Route::delete('/buku/{buku}/gallery/{gallery}', [ControllerBuku::class, 'deleteGallery'])->name('buku.deleteGallery');
-
-
-
     Route::get('/detail-buku/{title}', [ControllerBuku::class, 'galbuku'])->name('galeri.buku');
 
-    
+   
 });
+
+// Route::middleware(['auth','admin'])->group(function () {
+//     Route::get('/buku/create', [ControllerBuku::class, 'create'])->name('buku.create');
+//     Route::post('/buku', [ControllerBuku::class, 'store'])->name('buku.store');
+//     Route::delete('/buku/{id}', [ControllerBuku::class, 'destroy'])->name('buku.destroy');
+//     Route::get('/buku/edit/{id}', [ControllerBuku::class, 'edit'])->name('buku.edit');
+//     Route::post('/buku/update/{id}', [ControllerBuku::class, 'update'])->name('buku.update');
+//     Route::delete('/buku/{buku}/gallery/{gallery}', [ControllerBuku::class, 'deleteGallery'])->name('buku.deleteGallery');
+//     Route::get('/detail-buku/{title}', [ControllerBuku::class, 'galbuku'])->name('galeri.buku');
+
+    
+// });
 
 
 require __DIR__.'/auth.php';
